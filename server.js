@@ -16,7 +16,7 @@ app.use(
     saveUninitialized: true,
     cookie: {
       maxAge: 1000 * 60 * 60, // 1 hour
-      secure: true, // change to true IF using HTTPS reverse proxy
+      secure: process.env.NODE_ENV === 'production', // change to true IF using HTTPS reverse proxy
     }
   })
 );
@@ -57,4 +57,5 @@ app.use((req, res, next) => {
   res.setHeader("Referrer-Policy", "no-referrer");
   next();
 });
+
 app.use(express.static(path.join(__dirname, "public")));
