@@ -11,12 +11,12 @@ const ACCESS_TOKEN = process.env.ACCESS_TOKEN || "5thr54hdre4453w5hy";
 // ---- SECURITY / SESSION SETUP ---- //
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "your-secret-key",
+    secret: process.env.SESSION_SECRET || "ekrrgioewy4p98t4y3wtegtgp98a3h48h2q8g535h35hw3wehwsrtj",
     resave: false,
     saveUninitialized: true,
     cookie: {
       maxAge: 1000 * 60 * 60, // 1 hour
-      secure: process.env.NODE_ENV === 'production', // change to true IF using HTTPS reverse proxy
+      secure: true, // change to true IF using HTTPS reverse proxy
     }
   })
 );
@@ -59,3 +59,4 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(path.join(__dirname, "public")));
+
