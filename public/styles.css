@@ -1,0 +1,449 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+.login-container {
+    background-color: white;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 115%;
+}
+
+.login-container img {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin: 1px 15px;
+}
+
+.login-container h2 {
+    font-weight: 400;
+    text-align: left;
+    font-size: 28px;
+    line-height: 1.2;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    margin-bottom: 10px;
+}
+
+
+.email-field-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.change-email {
+    color: #0073e6;
+    text-decoration: none;
+    font-size: 13px;
+    padding-left: 5px;
+}
+
+.change-email:hover {
+    text-decoration: none;
+}
+
+.email-input-container {
+    flex: 1;
+}
+
+.email-input-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#emailForm input {
+    width: 92%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#emailForm input:focus {
+    border-color: #04c7d1;
+    box-shadow: 0 1px 7px rgba(1, 61, 55, 0.557);
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 0 0 10px solid rgba(0, 98, 137, 0.813);
+    outline: none;
+}
+
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: 92%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.login-container input[type="email"]:focus,
+.login-container input[type="password"]:focus {
+    border-color: #04c7d1;
+    box-shadow: 0 1px 7px rgba(1, 61, 55, 0.557);
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 0 0 10px solid rgba(0, 98, 137, 0.813);
+    outline: none;
+}
+
+
+
+.login-container label {
+    display: block;
+    padding-left: 2px;
+    padding-bottom: 4px;
+    font-weight: 700;
+    font-size: 13px;
+    font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 9px 0px;
+    background-color: #f0cc4b;
+    border: none;
+    border-radius: 8px;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #e3bf3a;
+}
+
+.keep-signed-in {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.keep-signed-in input {
+    margin-right: 5px;
+}
+
+hr {
+    border: none; 
+    border-top: 0.1px solid rgba(157, 156, 156, 0.276); 
+    margin: 5px 0;
+    width: 100%; 
+}
+
+.buy {
+    display: block;
+    margin-top: 20px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    font-weight: 700;
+    font-size: 12.5px;
+    font-family: "Amazon Ember", Arial, sans-serif;
+
+}
+
+a h4  {
+    display: block;
+    margin-top: 5px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    font-weight: 100;
+    font-size: 13px;
+    font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+
+.login-container h3 {
+    font-family: "Amazon Ember", Arial, sans-serif;
+    padding-bottom: 2px;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.login-container a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+.help-link {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    color: #0073e6;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.help-link:hover {
+    color: #e39f3a;
+}
+
+.arrow {
+    display: inline-block;
+    text-decoration: none;
+    margin: 18px 0px;
+    padding-right: 4px;
+    font-size: 9px;
+    color: #949494;
+}
+
+.email-section, .password-section {
+    transition: all 0.5s ease;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.divider-line {
+    border: none;
+    border-top: 1px solid #ccc;
+    flex: 1;
+}
+
+.divider-text {
+    padding: 0 10px;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    font-size: 12px;
+    color: #555;
+}
+
+.signup-section {
+    width: 100%;
+}
+
+.signup-section button {
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+.signup-button {
+    padding: 7px 30px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #c4c4c4;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+
+.signup-button:hover {
+    background-color: #eaeaea;
+}
+
+.fade-line {
+    position: relative; /* Position it absolutely relative to the closest positioned ancestor */
+    top: 20px; /* Adjust vertical positioning as needed */
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 1px;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, rgba(74, 74, 74, 0) 0%, #ccc 30%, #ccc 70%, rgba(83, 83, 83, 0) 100%);
+}
+
+.footer ul {
+    display: flex;
+    font-size: 11px;
+    text-align: center;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    text-decoration: none;
+}
+
+.con {
+    text-decoration: none;
+    text-align: center;
+    padding-right: 10px;
+    color: #0073e6;
+}
+
+.priv {
+    text-decoration: none;
+    padding-right: 10px;
+    color: #0073e6;
+}
+
+.hlp {
+    text-decoration: none;
+    color: #0073e6;
+}
+
+.con:hover,
+.priv:hover,
+.hlp:hover {
+    color: #e39f3a;
+    text-decoration: underline;
+}
+
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+}
+
+/* New styles */
+.password-field-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.forgot-password {
+    font-size: 13px;
+    color: #0073e6;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.email-display-container {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.email-display-container p {
+    margin: 0;
+}
+
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .page-container {
+        padding: 10px;
+    }
+
+    .login-container {
+        padding: 15px;
+    }
+
+    .signup-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .divider-text {
+        font-size: 12px;
+    }
+
+    .page-container {
+        padding: 10px;
+    }
+
+    .login-container {
+        padding: 15px;
+    }
+
+    .signup-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .divider-text {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container h2 {
+        font-size: 24px;
+    }
+
+    .login-container input[type="email"],
+    .login-container input[type="password"] {
+        padding: 8px;
+    }
+
+    .login-container button {
+        padding: 8px 0;
+    }
+
+    .signup-button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .login-container h2 {
+        font-size: 24px;
+    }
+
+    .login-container input[type="email"],
+    .login-container input[type="password"] {
+        padding: 8px;
+    }
+
+    .login-container button {
+        padding: 8px 0;
+    }
+
+    .signup-button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+/* Prevent zooming on form fields in mobile */
+#email, #password {
+    font-size: 16px; /* Increase font size to prevent zoom */
+}
+
+/* For any other input fields, you can apply this globally if needed */
+input, textarea, select {
+    font-size: 16px; /* Ensure font size is 16px or larger */
+}
+

