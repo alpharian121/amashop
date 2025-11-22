@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 // ---- CHANGE THIS TOKEN BEFORE DEPLOYING ---- //
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN || "5thr54hdre4453w5hy";
 
-// ---- SESSION MIDDLEWARE (add this!!) ---- //
+// ---- SESSION MIDDLEWARE ---- //
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "super-secret-key",
@@ -21,25 +21,7 @@ app.use(
   })
 );
 
-// ---- TOKEN PROTECTION ---- //
-app.use((req, res, next) => {
-  if (req.session.authorized) {
-    return next();
-  }
-
-  if (req.query.access === ACCESS_TOKEN) {
-    req.session.authorized = true;
-    return next();
-  }
-
-  return res.status(403).send("Access denied. Missing or invalid access token.");
-});
-
-// ---- SERVE HTML/CSS/JS ---- //
-app.use(express.static(path.join(__dirname, "public")));
-
-
-// === Anti-bot & secure headers middleware ===
+// ---- ANTI-BOT & SECURE HEADERS MIDDLEWARE ---- //
 app.use((req, res, next) => {
   const ua = req.headers['user-agent']?.toLowerCase() || "";
   if (/bot|crawler|spider|facebookexternalhit|bingpreview|headless|wget|curl/i.test(ua)) {
@@ -52,8 +34,25 @@ app.use((req, res, next) => {
   next();
 });
 
+// ---- TOKEN PROTECTION MIDDLEWARE ---- //
+app.use((req, res, next) => {
+  try {
+    if (req.session.authorized) return next();
+    if (req.query.access === ACCESS_TOKEN) {
+      req.session.authorized = true;
+      return next();
+    }
+    return res.status(403).send("Access denied. Missing or invalid access token.");
+  } catch (err) {
+    console.error("Session error:", err);
+    return res.status(500).send("Internal Server Error");
+  }
+});
+
+// ---- SERVE HTML/CSS/JS ---- //
 app.use(express.static(path.join(__dirname, "public")));
 
+// ---- START SERVER ---- //
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
