@@ -8,6 +8,18 @@ const PORT = process.env.PORT || 3000;
 // ---- CHANGE THIS TOKEN BEFORE DEPLOYING ---- //
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN || "5thr54hdre4453w5hy";
 
+// ---- SESSION MIDDLEWARE (add this!!) ---- //
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "super-secret-key",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false,  // set true if using HTTPS
+      maxAge: 1000 * 60 * 60 // 1 hour
+    }
+  })
+);
 
 // ---- TOKEN PROTECTION ---- //
 app.use((req, res, next) => {
@@ -27,12 +39,6 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, "public")));
 
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-
-
 // === Anti-bot & secure headers middleware ===
 app.use((req, res, next) => {
   const ua = req.headers['user-agent']?.toLowerCase() || "";
@@ -48,4 +54,6 @@ app.use((req, res, next) => {
 
 app.use(express.static(path.join(__dirname, "public")));
 
-
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
