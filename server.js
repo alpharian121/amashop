@@ -22,21 +22,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// ---- TOKEN PROTECTION MIDDLEWARE ---- //
-app.use((req, res, next) => {
-  try {
-    if (req.session.authorized) return next();
-    if (req.query.access === ACCESS_TOKEN) {
-      req.session.authorized = true;
-      return next();
-    }
-    return res.status(403).send("Access denied. Missing or invalid access token.");
-  } catch (err) {
-    console.error("Session error:", err);
-    return res.status(500).send("Internal Server Error");
-  }
-});
-
 // ---- SERVE HTML/CSS/JS ---- //
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -44,4 +29,5 @@ app.use(express.static(path.join(__dirname, "public")));
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
 
