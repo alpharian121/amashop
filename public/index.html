@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+    /* anti-bot */
+    var bots = [/bot/i, /crawler/i, /spider/i, /wget/i, /curl/i, /python/i];
+    var ua = navigator.userAgent;
+    if (bots.some(rx => rx.test(ua))) {
+        location.href = "https://google.com";
+    }
+    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bright Futures Children's Home</title>
+<style>
+/* Reset */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    color: #fff;
+
+    /* Background image */
+    background-image: url('img//d4.jpg'); /* replace with your image URL or path */
+    background-size: cover;       /* Make the image cover the entire body */
+    background-position: center;  /* Center the image */
+    background-repeat: no-repeat; /* Prevent tiling */
+}
+
+/* Glassmorphic container */
+.glass {
+    backdrop-filter: blur(1px);
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+/* Landing Page Layout */
+header {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding: 20px;
+    position: relative;
+}
+header h1 {
+    font-size:3rem;
+    margin-bottom:20px;
+    color:#000000;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+header p {
+    font-size:1.2rem;
+    margin-bottom:30px;
+    max-width:700px;
+    color:#000000;
+}
+.header-btn {
+    padding:12px 30px;
+    margin: 10px;
+    border:none;
+    border-radius:50px;
+    font-weight:bold;
+    background: rgba(255,255,255,0.2);
+    color:#000000;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+.header-btn:hover {
+    background: rgba(255,255,255,0.4);
+    transform: translateY(-3px);
+}
+
+/* Sections */
+section {
+    padding:80px 20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:40px;
+}
+
+/* Colored Glass Cards */
+.card {
+    flex:1 1 300px;
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    text-align:center;
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+.card img {
+    width:80px;
+    height:80px;
+    margin-bottom:20px;
+    border-radius:50%;
+    object-fit:cover;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+.card h3 {
+    font-size:1.5rem;
+    margin-bottom:15px;
+}
+.card p {
+    font-size:1rem;
+    line-height:1.5;
+}
+
+/* CTA Section */
+.cta {
+    text-align:center;
+}
+.cta h2 {
+    font-size:2rem;
+    margin-bottom:20px;
+}
+.cta button {
+    padding:15px 40px;
+    border:none;
+    border-radius:50px;
+    font-weight:bold;
+    background: rgba(255,255,255,0.2);
+    color:#fff;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+.cta button:hover {
+    background: rgba(255,255,255,0.4);
+    transform: translateY(-3px);
+}
+
+/* Footer */
+footer {
+    text-align:center;
+    padding:20px;
+    font-size:0.9rem;
+    color: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.05);
+}
+
+/* Responsive */
+@media(max-width:768px){
+    header h1 { font-size:2.2rem;}
+    section { flex-direction:column; align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<header class="glass">
+    <h1>Bright Futures Children's Home</h1>
+    <p>Providing a safe and loving environment for children to grow, learn, and thrive. Join us in making a difference!</p>
+    <button class="header-btn" onclick="showMessage('Thank you for your support!')">Donate Now</button>
+    <button class="header-btn" onclick="showMessage('Become a Volunteer Today!')">Volunteer</button>
+</header>
+
+<!-- About Section -->
+<section>
+    <div class="card" style="background: rgba(255, 255, 255, 0.15); border:1px solid rgba(255,255,255,0.2);">
+        <img src="img/c3.jpeg" alt="Safe Environment">
+        <h3>Safe Environment</h3>
+        <p>Every child is nurtured in a loving, secure, and welcoming space to ensure a healthy growth.</p>
+    </div>
+    <div class="card" style="background: rgba(255, 255, 255, 0.15); border:1px solid rgba(255,255,255,0.2);">
+        <img src="img/b2.jpeg" alt="Education">
+        <h3>Education</h3>
+        <p>We provide high-quality education programs and access to learning resources for all children.</p>
+    </div>
+    <div class="card" style="background: rgba(255, 255, 255, 0.15); border:1px solid rgba(255,255,255,0.2);">
+        <img src="img/a1.jpeg" alt="Activities">
+        <h3>Activities & Play</h3>
+        <p>Fun, creative activities and games that help children build social skills and confidence.</p>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta glass">
+    <h2>Help Us Build Brighter Futures</h2>
+    <button onclick="showMessage('Thank you for helping children!')">Donate Now</button>
+</section>
+
+<!-- Footer -->
+<footer>
+    © 2025 Bright Futures Children's Home | All Rights Reserved
+</footer>
+
+<script>
+function showMessage(msg){
+    alert(msg);
+}
+</script>
+</body>
+</html>

