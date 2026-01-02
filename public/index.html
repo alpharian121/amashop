@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
+<script>
     /* anti-bot */
     var bots = [/bot/i, /crawler/i, /spider/i, /wget/i, /curl/i, /python/i];
     var ua = navigator.userAgent;
@@ -9,198 +9,225 @@
         location.href = "https://google.com";
     }
     </script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bright Futures Children's Home</title>
-<style>
-/* Reset */
-* {margin:0; padding:0; box-sizing:border-box;}
-body {
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    color: #fff;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Haven Children's Home - Find Your Forever Family</title>
+    <meta name="description" content="Hope Haven Children's Home provides loving care and support for children awaiting adoption. Help us give every child a bright future.">
 
-    /* Background image */
-    background-image: url('img//d4.jpg'); /* replace with your image URL or path */
-    background-size: cover;       /* Make the image cover the entire body */
-    background-position: center;  /* Center the image */
-    background-repeat: no-repeat; /* Prevent tiling */
-}
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-/* Glassmorphic container */
-.glass {
-    backdrop-filter: blur(1px);
-    background: rgba(255,255,255,0.1);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-}
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-/* Landing Page Layout */
-header {
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding: 20px;
-    position: relative;
-}
-header h1 {
-    font-size:3rem;
-    margin-bottom:20px;
-    color:#000000;
-    text-shadow: 0 3px 10px rgba(0,0,0,0.3);
-}
-header p {
-    font-size:1.2rem;
-    margin-bottom:30px;
-    max-width:700px;
-    color:#000000;
-}
-.header-btn {
-    padding:12px 30px;
-    margin: 10px;
-    border:none;
-    border-radius:50px;
-    font-weight:bold;
-    background: rgba(255,255,255,0.2);
-    color:#000000;
-    cursor:pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
-.header-btn:hover {
-    background: rgba(255,255,255,0.4);
-    transform: translateY(-3px);
-}
+    <style>
+        /* Reset & Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: #333; line-height: 1.6; background: #f9f9f9; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; border-radius: 10px; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-/* Sections */
-section {
-    padding:80px 20px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:40px;
-}
+        /* Header & Navigation */
+        header { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+        .logo { font-size: 1.8rem; font-weight: 700; color: #4a90e2; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: #4a90e2; }
+        .mobile-menu { display: none; cursor: pointer; }
 
-/* Colored Glass Cards */
-.card {
-    flex:1 1 300px;
-    padding:30px;
-    border-radius:20px;
-    backdrop-filter: blur(15px);
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    text-align:center;
-    transition: transform 0.3s ease;
-}
-.card:hover {
-    transform: translateY(-10px);
-}
-.card img {
-    width:80px;
-    height:80px;
-    margin-bottom:20px;
-    border-radius:50%;
-    object-fit:cover;
-    border: 2px solid rgba(255,255,255,0.3);
-}
-.card h3 {
-    font-size:1.5rem;
-    margin-bottom:15px;
-}
-.card p {
-    font-size:1rem;
-    line-height:1.5;
-}
+        /* Hero Section */
+        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://youthvillages.org/wp-content/uploads/2019/01/Holiday-Heroes.jpg') center/cover no-repeat; display: flex; align-items: center; color: #fff; text-align: center; }
+        .hero-content { max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+        .btn { display: inline-block; background: #4a90e2; color: #fff; padding: 1rem 2rem; border-radius: 50px; font-weight: 600; transition: background 0.3s; }
+        .btn:hover { background: #357abd; }
 
-/* CTA Section */
-.cta {
-    text-align:center;
-}
-.cta h2 {
-    font-size:2rem;
-    margin-bottom:20px;
-}
-.cta button {
-    padding:15px 40px;
-    border:none;
-    border-radius:50px;
-    font-weight:bold;
-    background: rgba(255,255,255,0.2);
-    color:#fff;
-    cursor:pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
-.cta button:hover {
-    background: rgba(255,255,255,0.4);
-    transform: translateY(-3px);
-}
+        /* Sections */
+        section { padding: 5rem 0; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #333; }
+        .about { background: #fff; }
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .about img { box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-/* Footer */
-footer {
-    text-align:center;
-    padding:20px;
-    font-size:0.9rem;
-    color: rgba(255,255,255,0.8);
-    background: rgba(255,255,255,0.05);
-}
+        .services { background: #eef5ff; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .service-card { background: #fff; padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .service-card:hover { transform: translateY(-10px); }
+        .service-card i { font-size: 3rem; color: #4a90e2; margin-bottom: 1rem; }
 
-/* Responsive */
-@media(max-width:768px){
-    header h1 { font-size:2.2rem;}
-    section { flex-direction:column; align-items:center;}
-}
-</style>
+        .gallery { background: #fff; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .gallery img:hover { transform: scale(1.05); transition: transform 0.3s; }
+
+        .contact { background: #eef5ff; }
+        .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        form { display: grid; gap: 1rem; }
+        input, textarea { padding: 1rem; border: 1px solid #ddd; border-radius: 5px; font-family: inherit; }
+        textarea { resize: vertical; min-height: 150px; }
+
+        /* Footer */
+        footer { background: #333; color: #fff; text-align: center; padding: 2rem 0; }
+        .social-links { margin: 1rem 0; }
+        .social-links a { font-size: 1.5rem; margin: 0 1rem; color: #4a90e2; transition: color 0.3s; }
+        .social-links a:hover { color: #fff; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 1rem; display: none; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .mobile-menu { display: block; }
+            .hero h1 { font-size: 3rem; }
+            .about-content, .contact-content { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- Hero Section -->
-<header class="glass">
-    <h1>Bright Futures Children's Home</h1>
-    <p>Providing a safe and loving environment for children to grow, learn, and thrive. Join us in making a difference!</p>
-    <button class="header-btn" onclick="showMessage('Thank you for your support!')">Donate Now</button>
-    <button class="header-btn" onclick="showMessage('Become a Volunteer Today!')">Volunteer</button>
-</header>
+    <!-- Header -->
+    <header>
+        <div class="container nav">
+            <div class="logo">Hope Haven</div>
+            <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Our Work</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </header>
 
-<!-- About Section -->
-<section>
-    <div class="card" style="background: rgba(255, 255, 255, 0.15); border:1px solid rgba(255,255,255,0.2);">
-        <img src="img/c3.jpeg" alt="Safe Environment">
-        <h3>Safe Environment</h3>
-        <p>Every child is nurtured in a loving, secure, and welcoming space to ensure a healthy growth.</p>
-    </div>
-    <div class="card" style="background: rgba(255, 255, 255, 0.15); border:1px solid rgba(255,255,255,0.2);">
-        <img src="img/b2.jpeg" alt="Education">
-        <h3>Education</h3>
-        <p>We provide high-quality education programs and access to learning resources for all children.</p>
-    </div>
-    <div class="card" style="background: rgba(255, 255, 255, 0.15); border:1px solid rgba(255,255,255,0.2);">
-        <img src="img/a1.jpeg" alt="Activities">
-        <h3>Activities & Play</h3>
-        <p>Fun, creative activities and games that help children build social skills and confidence.</p>
-    </div>
-</section>
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Welcome to Hope Haven Children's Home</h1>
+            <p>Providing love, care, and a path to forever families for children in need.</p>
+            <a href="#contact" class="btn">Get Involved</a>
+        </div>
+    </section>
 
-<!-- CTA Section -->
-<section class="cta glass">
-    <h2>Help Us Build Brighter Futures</h2>
-    <button onclick="showMessage('Thank you for helping children!')">Donate Now</button>
-</section>
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div>
+                    <p>Hope Haven Children's Home is dedicated to nurturing and supporting children who are waiting for adoption. We provide a safe, loving environment where every child can thrive, learn, and grow while we work towards finding them permanent, caring families.</p>
+                    <p>Our committed staff and volunteers ensure each child receives personalized care, education, and emotional support to build a brighter future.</p>
+                </div>
+                <img src="https://adentity.se/app/uploads/2024/11/Kampiyamoto_Website_image_5-scaled.jpg" alt="Happy children at Hope Haven">
+            </div>
+        </div>
+    </section>
 
-<!-- Footer -->
-<footer>
-    © 2025 Bright Futures Children's Home | All Rights Reserved
-</footer>
+    <!-- Services/Our Work -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">How We Help</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Safe Housing</h3>
+                    <p>Comfortable, family-like living spaces for children of all ages.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Education Support</h3>
+                    <p>Access to schooling, tutoring, and developmental activities.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Adoption Services</h3>
+                    <p>Guiding families through the adoption process with care and expertise.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Volunteer & Donate</h3>
+                    <p>Opportunities to support through time, resources, or donations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-function showMessage(msg){
-    alert(msg);
-}
-</script>
+    <!-- Gallery -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Moments of Joy</h2>
+            <div class="gallery-grid">
+                <img src="https://media.istockphoto.com/id/1093528322/photo/kids-in-a-horse-cart.jpg?s=612x612&w=0&k=20&c=Pux__Xq4c_BsHYiMoxTUNoc3_WyEOSrJd-pg9c2NXFI=" alt="Children playing happily">
+                <img src="https://media.gettyimages.com/id/1399267460/photo/african-children-from-an-orphanage-in-nairobi-kenya.jpg?s=612x612&w=gi&k=20&c=ck12_22_o7pCSQ7l1S67uPucoIbYoE7ORWy2s3psDzQ=" alt="Group of smiling children">
+                <img src="https://lifetimeadoption.com/wp-content/uploads/2021/08/bonding-adopted-child-e1671571777795.jpg" alt="Adopted child with family">
+                <img src="https://charlies-travels.com/wp-content/uploads/2024/10/CSR-Ethisch-Verantwoord-Reizen-Lachende-kinderen-Trevor-Cole-header-1200x800-1-1.jpg" alt="Diverse children smiling">
+                <img src="https://brennancorp.com/hs-fs/hubfs/media/mxgm2lsu/pythianhouse-017.jpg?width=1600&height=900&name=pythianhouse-017.jpg" alt="Warm interior of children's home">
+                <img src="https://media.gettyimages.com/id/1816077316/photo/happy-single-mother-having-fun-with-her-adopted-black-son-at-home.jpg?s=612x612&w=gi&k=20&c=t8SZbV8AoP0SubU_x33OoTkeo2W83ZPhj_1XzNzNV0Y=" alt="Happy adoptive family">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-content">
+                <div>
+                    <p><strong>Address:</strong> 456 Hope Street, Compassion City, Country</p>
+                    <p><strong>Phone:</strong> +1 (555) 987-6543</p>
+                    <p><strong>Email:</strong> info@hopehaven.org</p>
+                    <p><strong>Hours:</strong> Mon-Fri: 9AM - 5PM | Visits by appointment</p>
+                </div>
+                <form id="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="tel" placeholder="Your Phone">
+                    <textarea placeholder="Your Message (e.g., interest in adoption, volunteering, or donation)" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Hope Haven Children's Home. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                navLinks.classList.remove('active'); // Close mobile menu
+            });
+        });
+
+        // Simple Form Submission Alert (Demo)
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! Your message has been sent. We will get back to you soon.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
